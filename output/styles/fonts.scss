@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "PublicSans-Light", sans-serif;
+  src: url("../assets/fonts/PublicSans-Light.woff") format("woff"),
+    url("../assets/fonts/PublicSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "PublicSans-Regular", sans-serif;
   src: url("../assets/fonts/PublicSans-Regular.woff") format("woff"),
     url("../assets/fonts/PublicSans-Regular.woff2") format("woff2");
@@ -19,13 +27,5 @@
   src: url("../assets/fonts/Puritan-Regular.woff") format("woff"),
     url("../assets/fonts/Puritan-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "PublicSans-Light", sans-serif;
-  src: url("../assets/fonts/PublicSans-Light.woff") format("woff"),
-    url("../assets/fonts/PublicSans-Light.woff2") format("woff2");
-  font-weight: 300;
   font-display: swap;
 }
