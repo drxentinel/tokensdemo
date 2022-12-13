@@ -4,8 +4,8 @@
   "base": "main",
   "rules": [
     {
-      "name": "Design Tokens / Colors",
-      "path": "./output/styles/colors.css",
+      "name": "Colors",
+      "path": "./output/styles/colors.scss",
       "filter": {
         "types": [
           "color"
@@ -21,16 +21,19 @@
           }
         },
         {
-          "name": "to-css-custom-properties",
+          "name": "to-scss-variables",
           "options": {
-            "formatName": "kebabCase"
+            "formatName": "camelCase",
+            "formatTokens": {
+              "color": "hex"
+            }
           }
         }
       ]
     },
     {
-      "name": "Design Tokens / Text Styles",
-      "path": "./output/styles/text-styles.css",
+      "name": "Text Styles",
+      "path": "./output/styles/text-styles.scss",
       "filter": {
         "types": [
           "textStyle"
@@ -38,7 +41,23 @@
       },
       "parsers": [
         {
-          "name": "to-css-text-style",
+          "name": "kebabcasify",
+          "options": {
+            "keys": [
+              "name"
+            ]
+          }
+        },
+        {
+          "name": "sort-by",
+          "options": {
+            "keys": [
+              "name"
+            ]
+          }
+        },
+        {
+          "name": "to-scss-mixin-text-style",
           "options": {
             "exclude": [
               "color",
@@ -53,8 +72,8 @@
       ]
     },
     {
-      "name": "Design Tokens / Import font files in CSS",
-      "path": "./output/styles/fonts.css",
+      "name": "Fonts Declaration",
+      "path": "./output/styles/fonts.scss",
       "filter": {
         "types": [
           "font"
@@ -68,14 +87,15 @@
               "woff",
               "woff2"
             ],
-            "fontsPath": "../fonts"
+            "genericFamily": "sans-serif",
+            "fontsPath": "../assets/fonts"
           }
         }
       ]
     },
     {
-      "name": "Design Tokens / Import font files",
-      "path": "./output/fonts",
+      "name": "Fonts Import",
+      "path": "./output/assets/fonts",
       "filter": {
         "types": [
           "font"
@@ -94,8 +114,8 @@
       ]
     },
     {
-      "name": "Design Tokens / Vectors",
-      "path": "./output/vectors",
+      "name": "Assets / Vectors",
+      "path": "./output/assets/vectors",
       "filter": {
         "types": [
           "vector"
