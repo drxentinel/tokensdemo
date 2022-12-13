@@ -4,11 +4,13 @@
   "base": "main",
   "rules": [
     {
-      "name": "Colors",
-      "path": "./output/styles/colors.scss",
+      "name": "Design Tokens / Theme",
+      "path": "./output/styles/theme.js",
       "filter": {
         "types": [
-          "color"
+          "color",
+          "font",
+          "textStyle"
         ]
       },
       "parsers": [
@@ -21,59 +23,42 @@
           }
         },
         {
-          "name": "to-scss-variables",
+          "name": "px-to-rem",
           "options": {
-            "formatName": "camelCase",
+            "keys": [
+              "fontSize"
+            ]
+          }
+        },
+        {
+          "name": "to-theme-ui",
+          "options": {
+            "variants": true,
+            "formatConfig": {
+              "exportDefault": true
+            },
             "formatTokens": {
-              "color": "hex"
+              "colorFormat": {
+                "format": "hsl"
+              },
+              "fontSizeFormat": {
+                "type": "string",
+                "unit": "rem"
+              }
+            },
+            "presets": {
+              "fontWeights": {
+                "preset": "base",
+                "freeze": true
+              }
             }
           }
         }
       ]
     },
     {
-      "name": "Text Styles",
-      "path": "./output/styles/text-styles.scss",
-      "filter": {
-        "types": [
-          "textStyle"
-        ]
-      },
-      "parsers": [
-        {
-          "name": "kebabcasify",
-          "options": {
-            "keys": [
-              "name"
-            ]
-          }
-        },
-        {
-          "name": "sort-by",
-          "options": {
-            "keys": [
-              "name"
-            ]
-          }
-        },
-        {
-          "name": "to-scss-mixin-text-style",
-          "options": {
-            "exclude": [
-              "color",
-              "text-indent",
-              "vertical-align",
-              "text-align"
-            ],
-            "relativeLineHeight": true,
-            "genericFamily": "serif"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Fonts Declaration",
-      "path": "./output/styles/fonts.scss",
+      "name": "Design Tokens / CSS font imports",
+      "path": "./output/styles/fonts.css",
       "filter": {
         "types": [
           "font"
@@ -84,17 +69,16 @@
           "name": "to-css-font-import",
           "options": {
             "formats": [
-              "woff",
-              "woff2"
+              "woff2",
+              "woff"
             ],
-            "genericFamily": "sans-serif",
             "fontsPath": "../assets/fonts"
           }
         }
       ]
     },
     {
-      "name": "Fonts Import",
+      "name": "Design Tokens / Export fonts",
       "path": "./output/assets/fonts",
       "filter": {
         "types": [
@@ -106,22 +90,35 @@
           "name": "convert-font",
           "options": {
             "formats": [
-              "woff",
-              "woff2"
+              "woff2",
+              "woff"
             ]
           }
         }
       ]
     },
     {
-      "name": "Assets / Vectors",
-      "path": "./output/assets/vectors",
+      "name": "Icons",
+      "path": "./output/assets/icons",
       "filter": {
         "types": [
           "vector"
         ]
       },
       "parsers": [
+        {
+          "name": "replace-string",
+          "options": {
+            "keys": [
+              "name"
+            ],
+            "regex": {
+              "pattern": "(.*?)\\/",
+              "flags": "g"
+            },
+            "trim": true
+          }
+        },
         {
           "name": "kebabcasify"
         },
@@ -132,6 +129,23 @@
               "js2svg": {
                 "pretty": true
               }
+            }
+          }
+        },
+        {
+          "name": "name-assets-files-by-pattern",
+          "options": {
+            "pattern": "{{name}}.jsx"
+          }
+        },
+        {
+          "name": "svg-to-jsx",
+          "options": {
+            "prepend": "import React from 'react';",
+            "variableFormat": "camelCase",
+            "wrapper": {
+              "tag": "div",
+              "className": "icon-{{name}} icon"
             }
           }
         }
