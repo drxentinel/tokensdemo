@@ -5,52 +5,22 @@
   "rules": [
     {
       "name": "Design Tokens / Theme",
-      "path": "./output/styles/theme.js",
+      "path": "./output/theme.js",
       "filter": {
         "types": [
           "color",
-          "font",
-          "textStyle"
+          "textStyle",
+          "font"
         ]
       },
       "parsers": [
         {
-          "name": "sort-by",
+          "name": "to-tailwind",
           "options": {
-            "keys": [
-              "name"
-            ]
-          }
-        },
-        {
-          "name": "px-to-rem",
-          "options": {
-            "keys": [
-              "fontSize"
-            ]
-          }
-        },
-        {
-          "name": "to-theme-ui",
-          "options": {
-            "variants": true,
+            "formatName": "camelCase",
             "formatConfig": {
-              "exportDefault": true
-            },
-            "formatTokens": {
-              "colorFormat": {
-                "format": "hsl"
-              },
-              "fontSizeFormat": {
-                "type": "string",
-                "unit": "rem"
-              }
-            },
-            "presets": {
-              "fontWeights": {
-                "preset": "base",
-                "freeze": true
-              }
+              "objectName": "extend",
+              "module": "commonjs"
             }
           }
         }
@@ -69,8 +39,8 @@
           "name": "to-css-font-import",
           "options": {
             "formats": [
-              "woff2",
-              "woff"
+              "woff",
+              "woff2"
             ],
             "fontsPath": "../assets/fonts"
           }
@@ -90,35 +60,22 @@
           "name": "convert-font",
           "options": {
             "formats": [
-              "woff2",
-              "woff"
+              "woff",
+              "woff2"
             ]
           }
         }
       ]
     },
     {
-      "name": "Icons",
-      "path": "./output/assets/icons",
+      "name": "Design Tokens / Vector",
+      "path": "./output/assets/vectors",
       "filter": {
         "types": [
           "vector"
         ]
       },
       "parsers": [
-        {
-          "name": "replace-string",
-          "options": {
-            "keys": [
-              "name"
-            ],
-            "regex": {
-              "pattern": "(.*?)\\/",
-              "flags": "g"
-            },
-            "trim": true
-          }
-        },
         {
           "name": "kebabcasify"
         },
@@ -128,24 +85,26 @@
             "svgo": {
               "js2svg": {
                 "pretty": true
-              }
-            }
-          }
-        },
-        {
-          "name": "name-assets-files-by-pattern",
-          "options": {
-            "pattern": "{{name}}.jsx"
-          }
-        },
-        {
-          "name": "svg-to-jsx",
-          "options": {
-            "prepend": "import React from 'react';",
-            "variableFormat": "camelCase",
-            "wrapper": {
-              "tag": "div",
-              "className": "icon-{{name}} icon"
+              },
+              "plugins": [
+                {
+                  "removeDimensions": true
+                },
+                {
+                  "removeAttrs": {
+                    "attrs": "*:(fill|stroke)"
+                  }
+                },
+                {
+                  "addAttributesToSVGElement": {
+                    "attributes": [
+                      "width=\"1em\"",
+                      "height=\"1em\"",
+                      "focusable=\"false\""
+                    ]
+                  }
+                }
+              ]
             }
           }
         }
