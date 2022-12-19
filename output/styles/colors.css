@@ -44,12 +44,12 @@
   --info-info-darker: rgb(42, 100, 109);
   --info-info-light: rgb(153, 222, 234);
   --info-info-lighter: rgb(231, 246, 248);
-  --primary-primary: rgb(0, 94, 162);
+  --primary-primary: rgb(250, 148, 65);
   --primary-primary-dark: rgb(26, 68, 128);
   --primary-primary-darker: rgb(22, 46, 81);
-  --primary-primary-light: rgb(115, 179, 231);
+  --primary-primary-light: rgb(255, 188, 120);
   --primary-primary-lighter: rgb(217, 232, 246);
-  --primary-primary-vivid: rgb(0, 80, 216);
+  --primary-primary-vivid: rgb(153, 222, 234);
   --secondary-secondary: rgb(216, 57, 51);
   --secondary-secondary-dark: rgb(181, 9, 9);
   --secondary-secondary-darker: rgb(139, 10, 3);

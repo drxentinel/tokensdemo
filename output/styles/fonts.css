@@ -1,31 +1,31 @@
 @font-face {
-  font-family: "Puritan-Regular";
-  src: url("../assets/fonts/Puritan-Regular.woff") format("woff"),
-    url("../assets/fonts/Puritan-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "PublicSans-Light";
-  src: url("../assets/fonts/PublicSans-Light.woff") format("woff"),
-    url("../assets/fonts/PublicSans-Light.woff2") format("woff2");
+  src: url("../fonts/PublicSans-Light.woff") format("woff"),
+    url("../fonts/PublicSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-display: swap;
 }
 
 @font-face {
   font-family: "PublicSans-Regular";
-  src: url("../assets/fonts/PublicSans-Regular.woff") format("woff"),
-    url("../assets/fonts/PublicSans-Regular.woff2") format("woff2");
+  src: url("../fonts/PublicSans-Regular.woff") format("woff"),
+    url("../fonts/PublicSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "PublicSans-Bold";
-  src: url("../assets/fonts/PublicSans-Bold.woff") format("woff"),
-    url("../assets/fonts/PublicSans-Bold.woff2") format("woff2");
+  src: url("../fonts/PublicSans-Bold.woff") format("woff"),
+    url("../fonts/PublicSans-Bold.woff2") format("woff2");
   font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Puritan-Regular";
+  src: url("../fonts/Puritan-Regular.woff") format("woff"),
+    url("../fonts/Puritan-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-display: swap;
 }
